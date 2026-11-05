@@ -59,13 +59,11 @@ Tracing is off until you turn it on in `~/.claude/langsmith.json`, unless your a
 { "enabled": true, "agent_id": "shared-claude" }
 ```
 
-Or send them to a project with `project`:
+In a [project-based workspace](/langsmith/migrate-to-agent-based-workspaces), use the legacy `project` setting instead:
 
 ```json
 { "enabled": true, "project": "shared-claude" }
 ```
-
-Use `agent_id` unless you need a specific project. If you set both, `agent_id` wins.
 
 Start a Cowork task and open your agent or project in [LangSmith](https://smith.langchain.com). Skill calls record which skill ran, so you can filter traces by skill.
 

@@ -61,13 +61,11 @@ Tracing is off until you turn it on in `~/.cursor/langsmith.json`, unless your a
 { "enabled": true, "agent_id": "shared-cursor" }
 ```
 
-Or send them to a project with `project`:
+In a [project-based workspace](/langsmith/migrate-to-agent-based-workspaces), use the legacy `project` setting instead:
 
 ```json
 { "enabled": true, "project": "shared-cursor" }
 ```
-
-Use `agent_id` unless you need a specific project. If you set both, `agent_id` wins.
 
 <Warning>
 A project can override these settings with `<project>/.cursor/langsmith.json` or `<project>/langsmith-plugins.json`. A cloned repository can use them to turn tracing on and send your prompts and files to someone else's server. Before you trust a repository, review those files. Cursor's own `.cursor/hooks.json` can run commands, so review that one too.
@@ -114,7 +112,7 @@ Each setting has a config file key and an environment variable. The environment 
 | `enabled` | `TRACE_TO_LANGSMITH` | `false` | Turns tracing on. |
 | `api_key` | `LANGSMITH_CURSOR_API_KEY` | none | LangSmith API key. Not needed if you sign in with the CLI. |
 | `agent_id` | `LANGSMITH_AGENT_ID` | none | Agent the traces go to. Wins over `project` if both are set. |
-| `project` | `LANGSMITH_CURSOR_PROJECT` | `cursor` | Project the traces go to when `agent_id` is not set. |
+| `project` (deprecated) | `LANGSMITH_CURSOR_PROJECT` | `cursor` | Project the traces go to. Use `agent_id` unless you're in a [project-based workspace](/langsmith/migrate-to-agent-based-workspaces). |
 | `api_url` | `LANGSMITH_CURSOR_ENDPOINT` | `https://api.smith.langchain.com` | LangSmith server to send to. |
 | `workspace_id` | `LANGSMITH_WORKSPACE_ID` | none | Workspace the traces go to when you sign in with the CLI. API keys ignore it and your config file wins over the variable. |
 
